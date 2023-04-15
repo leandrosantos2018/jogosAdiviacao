@@ -1,8 +1,12 @@
+import random
+
+
 print("********************************")
 print("Bem-vindo ao jogo de Adivinhação")
 print("********************************")
 
-numero_screto = 42
+#gerando numero aleatori com biblioteca Random
+numero_screto = random.Random().randrange(1,100)
 
 total_de_tentativa = 3
 
@@ -32,7 +36,7 @@ for  rodada in range(1,total_de_tentativa + 1):
 
 
 
-
+print("o numero Secreto era " , numero_screto)
 print("fim do jogo")
 
 
