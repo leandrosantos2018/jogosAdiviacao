@@ -1,14 +1,4 @@
 import random
-
-
-def imprime_Mensagem_ganhado():
-    print('Você é ganhou!!1')
-
-
-def imprime_mensagem_perdedo(palavra):
-    print('Você é Perdeu!!!')
-    print('a Palavra secreta era {}'.format(palavra))
-
 def jogar():
     imprime_Mensagem()
     palavra_secreta = carrega_palavra_secreta()
@@ -32,10 +22,11 @@ def jogar():
            erros += 1
        erro =  len(letras)
        enforcado = erros == erro
-       acertou = letras_faltando ==0
+       acertou = letras_faltando == 0
        if acertou:
         imprime_Mensagem_ganhado()
         print("quantidade tentativa erradas {}".format(erros))
+
         break
        if enforcado:
            imprime_mensagem_perdedo(palavra_secreta)
@@ -44,6 +35,42 @@ def imprime_Mensagem():
     print("********************************")
     print("***Bem-vindo ao jogo de Forca***")
     print("********************************")
+
+def imprime_Mensagem_ganhado():
+    print("Parabéns, você ganhou!")
+    print("       ___________      ")
+    print("      '._==_==_=_.'     ")
+    print("      .-\\:      /-.    ")
+    print("     | (|:.     |) |    ")
+    print("      '-|:.     |-'     ")
+    print("        \\::.    /      ")
+    print("         '::. .'        ")
+    print("           ) (          ")
+    print("         _.' '._        ")
+    print("        '-------'       ")
+
+
+def imprime_mensagem_perdedo(palavra):
+    print("Puxa, você foi enforcado!")
+    print("A palavra era {}".format(palavra))
+    print("    _______________         ")
+    print("   /               \       ")
+    print("  /                 \      ")
+    print("//                   \/\  ")
+    print("\|   XXXX     XXXX   | /   ")
+    print(" |   XXXX     XXXX   |/     ")
+    print(" |   XXX       XXX   |      ")
+    print(" |                   |      ")
+    print(" \__      XXX      __/     ")
+    print("   |\     XXX     /|       ")
+    print("   | |           | |        ")
+    print("   | I I I I I I I |        ")
+    print("   |  I I I I I I  |        ")
+    print("   \_             _/       ")
+    print("     \_         _/         ")
+    print("       \_______/           ")
+    print('a Palavra secreta era {}'.format(palavra))
+
 
 def carrega_palavra_secreta():
     arquivo = open("palavras.txt", "r")
@@ -62,7 +89,6 @@ def inicializa_letras(palavra):
    return ["_" for letra in palavra]
 
 def marca_chute_correto(chute,letras,palavra_secreta,letras_faltando):
-
     index = 0
     for letra in palavra_secreta:
         if chute == letra:
