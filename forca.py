@@ -1,19 +1,21 @@
+import random
+
+
 
 def jogar():
-    print("********************************")
-    print("***Bem-vindo ao jogo de Forca***")
-    print("********************************")
-                    #b0,a1,n2,a3,n4,a5
-    palavra_secreta = "banana".upper()
+    imprime_Mensagem()
+    palavra_secreta = carrega_palavra_secreta()
+
     enforcado = False
     acertou = False
-    letras = ["_", "_", "_", "_", "_", "_"]
-    letras_faltando = int(str(letras.count('_')))
-
     erros = 0
 
+    letras =  inicializa_letras(palavra_secreta)
 
-    #enquanto True and True
+    letras_faltando = int(str(letras.count('_')))
+
+
+
     while(not enforcado and not acertou):
 
        chute = input("Qual é a letra?")
@@ -30,8 +32,8 @@ def jogar():
            print('Ainda faltam acertar {} letras'.format(letras_faltando))
        else:
            erros += 1
-
-       enforcado = erros == 6
+       erro =  len(letras)
+       enforcado = erros == erro
        acertou = letras_faltando ==0
        if acertou:
             print("Você ganhou !!")
@@ -42,8 +44,29 @@ def jogar():
 
     print("fim de jogo")
 
+
+
+def imprime_Mensagem():
+    print("********************************")
+    print("***Bem-vindo ao jogo de Forca***")
+    print("********************************")
+
+def carrega_palavra_secreta():
+    arquivo = open("palavras.txt", "r")
+
+    palavras = []
+
+    for linha in arquivo:
+        linha = linha.strip().upper()
+        palavras.append(linha)
+
+    palavra_secreta = palavras[random.randrange(0, len(palavras))]
+    return  palavra_secreta
+    arquivo.close()
+
+def inicializa_letras(palavra):
+   return ["_" for letra in palavra]
+
 if __name__ == "__main__":
     jogar()
-
-
 
